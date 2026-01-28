@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Project Gallery</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <link rel="stylesheet" href="./css/navbar.css">
+
+
+<style>
+    
+    h1{
+        padding-top: 20px;
+        text-align: center;
+    }
+    /* ===== Navbar ===== */
+ .fix-rotate {
+    transform: rotate(90deg);
+}
+
+.main-navbar {
+    /* background-color: #000; */
+    width: 100%;
+    height: 65px;
+    display: flex;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+} 
+
+.nav-container {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Logo */
+.nav-logo {
+    text-decoration: none;
+}
+
+.logo-main {
+    color: #fff;
+    font-size: 18px;
+    letter-spacing: 2px;
+    font-weight: 600;
+}
+
+/* Links */
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 35px;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #fff;
+    font-size: 14px;
+    letter-spacing: 1.5px;
+    transition: color 0.3s ease;
+}
+
+/* Hover Gold */
+.nav-link:hover {
+    color: #D4AF37;
+}
+
+/* Active link (اختياري) */
+
+
+/* Mobile toggle (لو حابب تكمّل عليه بعدين) */
+.mobile-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 22px;
+    cursor: pointer;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #fff;
+}
+
+/* ===== Navbar ===== */
+
+/* ===== Gallery Viewer ===== */
+.viewer {
+    position: relative;
+    width: 100%;
+    height: calc(100vh - 90px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.viewer img {
+    max-width: 75%;
+    max-height: 80%;
+    object-fit: contain;
+}
+
+/* Arrows */
+.arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 42px;
+    color: #000;
+    cursor: pointer;
+    user-select: none;
+}
+
+.arrow.left {
+    left: 40px;
+}
+
+.arrow.right {
+    right: 40px;
+}
+
+/* ===== Content ===== */
+.content {
+    max-width: 900px;
+    margin: 40px auto 80px;
+    text-align: center;
+}
+
+.content h2 {
+    font-size: 26px;
+    margin-bottom: 15px;
+}
+
+.content p {
+    color: #555;
+    line-height: 1.8;
+    font-size: 15px;
+    margin-bottom: 30px;
+}
+
+/* Button */
+.back-btn {
+    display: inline-block;
+    padding: 14px 32px;
+    border: 1px solid #000;
+    text-decoration: none;
+    color: #000;
+    font-size: 14px;
+    letter-spacing: 1px;
+    transition: .3s;
+}
+
+.back-btn:hover {
+    background: #000;
+    color: #fff;
+}
+</style>
+</head>
+
+<body>
+<h1>Projects</h1>
+<section class="viewer">
+    <span class="arrow left" onclick="prev()">&#10094;</span>
+    <img id="mainImage">
+    <span class="arrow right" onclick="next()">&#10095;</span>
+</section>
+
+<section class="content">
+    <h2 id="title"></h2>
+    <p id="description" style="max-width: 800px; margin: 20px auto; color: #555; line-height: 1.6;"></p>
+    <a href="Projects.html" class="back-btn">Back to Projects</a>
+</section>
+
+<script>
+const projectsData = {
+    sanlin: {
+        title: "Sanlin Riverside Development",
+        desc: "The development is a key part of the wider Sanlin Riverside project in Shanghai...",
+       images: [
+  { src: "https://iili.io/fi2TBfe.jpg" }, 
+  { src: "https://iili.io/fi2Ei4R.jpg" }, 
+  { src: "https://iili.io/fi2MCHN.jpg" }, 
+  { src: "https://iili.io/fi2Vgj9.jpg" }, 
+  { src: "https://iili.io/fi2WPtt.jpg" }, // 5 :contentReference[oaicite:5]{index=5}
+  { src: "https://iili.io/fi2Xvz7.jpg" }, // 6 :contentReference[oaicite:6]{index=6}
+  { src: "https://iili.io/fi2h1Yx.jpg" }, // 7 :contentReference[oaicite:7]{index=7}
+  { src: "https://iili.io/fi2wRfe.jpg" }, // 8 :contentReference[oaicite:8]{index=8}
+  { src: "https://iili.io/fi2NIkv.jpg" }, // 9 :contentReference[oaicite:9]{index=9}
+ { src: "https://iili.io/fid6x99.jpg" },  // :contentReference[oaicite:0]{index=0}
+  { src: "https://iili.io/fi2UxMQ.jpg" },  // :contentReference[oaicite:1]{index=1}
+ 
+]
+
+    },
+
+    shura: {
+        title: "Shura Island Saudi Arabia",
+        desc: "The central thrust of the project is to use the preservation of the rich biodiversity...",
+     images: [
+  { src: "https://iili.io/fidiS44.jpg", rotate: false },
+  { src: "https://iili.io/fidyNUu.jpg", rotate: false },
+  { src: "https://iili.io/fi2s2Xn.jpg", rotate: false },
+  { src: "https://iili.io/fi2s8hX.jpg", rotate: false },
+  { src: "https://iili.io/fi2Lc6G.jpg", rotate: false },
+  { src: "https://iili.io/fi2LgwP.jpg", rotate: false },
+]
+
+    },
+
+    airport: {
+        title: "King Salman International Airport",
+        desc: "King Salman International Airport represents one of the largest aviation infrastructure projects in the world...",
+       images: [
+  { src: "https://iili.io/fidhyxt.jpg", rotate: false },
+  { src: "https://iili.io/fi2yKBI.jpg", rotate: false },
+  { src: "https://iili.io/fi2yOva.jpg", rotate: false },
+  { src: "https://iili.io/fi39Fuj.jpg", rotate: false },
+]
+
+    },
+
+    luxury: {
+        title: "Luxury Residence & Beachclub",
+        desc: "The project delivers a new benchmark for high-end coastal living through its sculptural architectural form...",
+      images: [
+  { src: "https://iili.io/fidtOqg.jpg", rotate: false },
+  { src: "https://iili.io/fi32HWx.jpg", rotate: false },
+  { src: "https://iili.io/fi32jee.jpg", rotate: false },
+  { src: "https://iili.io/fi333Qf.jpg", rotate: false },
+]
+
+    },
+
+    facade: {
+        title: "Facade Design",
+        desc: "Key design packages including: façade articulation and exterior design development...",
+       images: [
+  { src: "https://iili.io/fidbFnt.jpg", rotate: false },
+  { src: "https://iili.io/fi3qciJ.jpg", rotate: false },
+  { src: "https://iili.io/fi3B1Lu.jpg", rotate: false },
+]
+    },
+
+    territorial: {
+        title: "Territorial Project",
+        desc: "The housing complex has a waste infrastructure to ease the process of sorting waste...",
+       images: [
+  { src: "https://iili.io/fidm2Jj.jpg", rotate: false },
+  { src: "https://iili.io/fi3ILj2.jpg", rotate: false },
+  { src: "https://iili.io/fi3Tk9j.jpg", rotate: false },
+  { src: "https://iili.io/fi2HOwx.jpg", rotate: false },
+]
+
+    },
+
+    "mobile-house": {
+        title: "Mobile House Design",
+        desc: "We try to tackle these issues with a mobile house design equipped with 3 rotating furniture panels...",
+        images: [
+  { src: "https://iili.io/fid6x99.md.jpg" }
+]
+
+    },
+
+    interior: {
+        title: "Interior Seating Area",
+        desc: "Modern interior design with focus on natural light and open spaces...",
+      images: [
+  { src: "https://iili.io/fid6x99.jpg" },
+  { src: "https://iili.io/fi2NIkv.jpg" },
+]
+
+    },
+
+    landscape: {
+        title: "Landscape & Open Plan",
+        desc: "Sunken gardens that create a welcoming environment for employees and visitors...",
+      images: [
+  { src: "https://iili.io/fid6x99.jpg" },
+  { src: "https://iili.io/fi2NIkv.jpg" },
+]
+
+    }
+};
+
+
+const urlParams = new URLSearchParams(window.location.search);
+const projectId = urlParams.get('id');
+
+const project = projectsData[projectId] || projectsData["sanlin"];
+let index = 0;
+
+const img = document.getElementById("mainImage");
+const title = document.getElementById("title");
+const desc = document.getElementById("description");
+
+function show() {
+    img.src = project.images[index].src;
+
+    if (project.images[index].rotate) {
+        img.classList.add("fix-rotate");
+    } else {
+        img.classList.remove("fix-rotate");
+    }
+
+    title.textContent = project.title;
+    desc.textContent = project.desc;
+}
+
+function next() {
+    index = (index + 1) % project.images.length;
+    show();
+}
+
+function prev() {
+    index = (index - 1 + project.images.length) % project.images.length;
+    show();
+}
+
+show();
+
+</script>
+</body>
+</html>

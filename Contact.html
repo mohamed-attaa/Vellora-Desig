@@ -1,0 +1,1675 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Architecture Hub | Contact Professionals</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+/* Reset وإعدادات عامة */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* تقليل المسافات بين السكاشن */
+.hero {
+  padding: 110px 0 10px; /* كان 120px 0 80px */
+}
+
+.contact-section,
+.email-section,
+.calendar-section {
+  padding: 10px 0; /* كان 80px 0 */
+}
+
+/* تقليل المسافة تحت العناوين */
+.section-title {
+  margin-bottom: 25px; /* كان 50px */
+}
+
+/* تقليل المسافة تحت كروت التواصل */
+.contact-options {
+  margin-bottom: 25px; /* كان 60px */
+}
+
+/* لو لسه فيه فراغ زيادة بسبب container بتاع الفورم */
+.email-form-container,
+.calendar-container {
+  padding: 30px 25px; /* كان 50/40 */
+}
+
+body {
+    overflow-y: hidden; /* لإخفاء شريط التمرير العمودي فقط */
+}
+:root {
+    --white: #ffffff;
+    --gold: #D4AF37;
+    --gray: #333;
+    --light-gray: #999;
+    --primary-black: #ffffff; /* تغيير من أسود إلى أبيض */
+    --secondary-black: #f5f5f5; /* خلفية فاتحة */
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--primary-black); /* الآن أبيض */
+    color: #000000; /* تغيير النص الرئيسي إلى داكن */
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* النافبار المعدل: لوجو شمال - لينكات يمين */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 30px 0;
+    background-color: #000000; /* خلفية بيضاء */
+    transition: all 0.3s ease;
+}
+
+.navbar.scrolled {
+    background-color: rgba(0, 0, 0, 0.98); /* أبيض مع شفافية خفيفة */
+    padding: 20px 0;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+}
+
+.nav-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* اللوجو على الشمال */
+.logo {
+    flex: 0 0 auto;
+}
+html, body {
+    overflow: hidden; /* يخفي شريط التمرير */
+    height: 100%;
+    -ms-overflow-style: none;  /* ل Internet Explorer و Edge */
+    scrollbar-width: none;  /* ل Firefox */
+}
+body::-webkit-scrollbar {
+    display: none; /* ل Chrome, Safari و Opera */
+}
+
+/* السماح بالتمرير داخل المحتوى إذا لزم الأمر */
+body {
+    overflow-y: auto; /* يسمح بالتمرير داخل body */
+    -webkit-overflow-scrolling: touch; /* لمسة سلسة على الجوال */
+}
+.logo h1 {
+    font-size: 16.5px;
+    font-weight: 350;
+    letter-spacing: 2px;
+    color: #ffffff; /* لون أسود للنص */
+    white-space: nowrap;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* اللينكات على اليمين */
+.nav-links {
+    display: flex;
+    gap: 40px;
+    list-style: none;
+}
+
+.nav-link {
+    color: #f3f3f3; /* لون داكن للروابط */
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 350;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+    position: relative;
+    padding: 5px 0;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.nav-link:hover {
+    color: var(--gold);
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: var(--gold);
+    transition: width 0.3s ease;
+}
+                      .logo a,
+.logo a:hover,
+.logo a:focus,
+.logo a:active {
+    text-decoration: none;
+}
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* زر القائمة للجوال */
+.hamburger {
+    display: none;
+    cursor: pointer;
+    flex-direction: column;
+    gap: 4px;
+    margin-left: 20px;
+    z-index: 3000;
+}
+
+.bar {
+    width: 25px;
+    height: 1px;
+    background-color: #000000; /* خطوط داكنة */
+    transition: 0.3s;
+}
+
+/* تصميم متجاوب */
+@media (max-width: 768px) {
+    .hamburger {
+        display: flex;
+    }
+
+    .nav-container {
+        padding: 0 20px;
+    }
+
+    .navbar {
+        padding: 20px 0;
+    }
+
+    .navbar.scrolled {
+        padding: 15px 0;
+    }
+
+    .nav-links {
+        position: fixed;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        height: auto;
+        background-color: rgba(255, 255, 255, 0.98); /* خلفية بيضاء */
+        backdrop-filter: blur(10px);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 25px;
+        padding: 30px 0;
+        transform: translateY(-20px);
+        opacity: 0;
+        pointer-events: none;
+        z-index: 2500;
+        transition: all 0.4s ease;
+        border-top: 1px solid rgba(0, 0, 0, 0.05);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-links.active {
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    .nav-link {
+        font-size: 14px;
+        padding: 12px 0;
+        color: #000000;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 350;
+    }
+}
+
+/* تذييل الصفحة */
+@media (max-width: 767px) {
+    footer {
+        padding: 1.5rem 1rem 1rem;
+    }
+
+    .footer-grid {
+        gap: 1.5rem;
+    }
+
+    .footer-logo-text {
+        font-size: 1.2rem;
+    }
+
+    .footer-logo-icon {
+        font-size: 1.5rem;
+        padding: 6px;
+    }
+
+    .footer-title {
+        font-size: 1rem;
+    }
+
+    .footer-link {
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer-about-text {
+        font-size: 0.85rem;
+    }
+
+    .footer-contact p {
+        font-size: 0.85rem;
+    }
+
+    .social-link {
+        width: 32px;
+        height: 32px;
+    }
+
+    .social-link svg {
+        width: 16px;
+        height: 16px;
+    }
+}
+
+@media (min-width: 640px) {
+    .footer-bottom {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
+
+.copyright {
+    font-family: 'Montserrat', sans-serif;
+    color: #666;
+    font-size: 0.85rem;
+    order: 2;
+    font-weight: 350;
+}
+
+@media (min-width: 640px) {
+    .copyright {
+        order: 1;
+    }
+}
+
+.social-links {
+    display: flex;
+    gap: 0.8rem;
+    order: 1;
+}
+
+@media (min-width: 640px) {
+    .social-links {
+        order: 2;
+    }
+}
+
+.social-link {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #555;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.social-link:hover {
+    background: rgba(212, 175, 55, 0.1);
+    color: #D4AF37;
+    border-color: #D4AF37;
+    transform: translateY(-2px);
+}
+
+.social-link svg {
+    width: 18px;
+    height: 18px;
+}
+
+:root {
+    --background-dark: #ffffff; /* فاتح بدلاً من داكن */
+    --border-dark: #000000;
+    --primary: #C9A86A;
+    --text-white: #000000; /* تغيير إلى داكن */
+    --primary-black: #ffffff; /* أبيض */
+    --secondary-black: #f5f5f5; /* رمادي فاتح */
+    --primary-white: #000000; /* داكن للنص */
+    --secondary-white: #000000; /* رمادي داكن للنص الثانوي */
+    --gold: #da9f52;
+    --light-gold: #333; /* داكن */
+    --dark-gold: #000000;
+    --accent-gold: #333; /* داكن */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 30px;
+}
+
+.cart-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 10000;
+    justify-content: center;
+    align-items: center;
+}
+
+.cart-modal.active {
+    display: flex;
+}
+
+.cart-modal-content {
+    background-color: #fff; /* خلفية بيضاء */
+    color: #333; /* نص داكن */
+    width: 90%;
+    max-width: 800px;
+    max-height: 80vh;
+    border-radius: 20px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    animation: slideIn 0.3s ease-out;
+    font-family: 'Montserrat', sans-serif;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.cart-modal-header {
+    padding: 20px 30px;
+    background-color: #f9f9f9;
+    border-bottom: 1px solid var(--border-dark);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cart-modal-header h3 {
+    font-size: 14px;
+    color: var(--gold);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 350;
+}
+
+.close-cart {
+    background: none;
+    border: none;
+    color: #333;
+    font-size: 14px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 350;
+}
+
+.close-cart:hover {
+    color: var(--gold);
+}
+
+.cart-modal-body {
+    padding: 30px;
+    overflow-y: auto;
+    flex-grow: 1;
+}
+
+.cart-empty {
+    text-align: center;
+    padding: 40px 20px;
+    color: #000000;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 350;
+}
+
+.cart-empty .material-symbols-outlined {
+    font-size: 64px;
+    color: var(--gold);
+    margin-bottom: 20px;
+    opacity: 0.5;
+}
+
+.cart-items {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.cart-item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.02);
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.cart-item-image {
+    width: 80px;
+    height: 80px;
+    background-color: #f5f5f5;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    color: var(--gold);
+}
+
+.cart-item-details {
+    flex-grow: 1;
+}
+
+.cart-item-name {
+    font-size: 14px;
+    font-weight: 350;
+    margin-bottom: 5px;
+    color: #333;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.cart-item-price {
+    color: var(--gold);
+    font-weight: 350;
+    font-size: 14px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.cart-item-controls {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.quantity-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.quantity-btn {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #f5f5f5;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 350;
+}
+
+.quantity-btn:hover {
+    background-color: var(--gold);
+    color: #fff;
+}
+
+.cart-item-quantity {
+    font-size: 14px;
+    font-weight: 350;
+    min-width: 30px;
+    text-align: center;
+    color: #333;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.remove-item {
+    background: none;
+    border: none;
+    color: #ff4757;
+    cursor: pointer;
+    font-size: 14px;
+    transition: color 0.3s ease;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 350;
+}
+
+.remove-item:hover {
+    color: #ff6b81;
+}
+
+.cart-modal-footer {
+    padding: 20px 30px;
+    background-color: #f9f9f9;
+    border-top: 1px solid var(--border-dark);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cart-total {
+    font-size: 14px;
+    font-weight: 350;
+    color: #333;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.cart-total span {
+    color: var(--gold);
+}
+
+.cart-actions {
+    display: flex;
+    gap: 15px;
+}
+
+.cart-btn {
+    padding: 12px 30px;
+    border-radius: 8px;
+    font-weight: 350;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    font-size: 14px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.clear-cart-btn {
+    background-color: transparent;
+    border-color: #ff4757;
+    color: #ff4757;
+}
+
+.clear-cart-btn:hover {
+    background-color: rgba(255, 71, 87, 0.1);
+}
+
+.checkout-btn {
+    background: linear-gradient(135deg, var(--gold), var(--dark-gold));
+    color: #fff;
+    border: none;
+}
+
+.checkout-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(201, 168, 106, 0.3);
+}
+
+.checkout-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none !important;
+    box-shadow: none !important;
+}
+
+.hero {
+    color: #000000; /* نص داكن */
+    padding: 120px 0 80px;
+    position: relative;
+    overflow: hidden;
+    background-color: #fff; /* خلفية بيضاء */
+}
+
+.hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.hero-content {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+}
+
+.hero-title {
+    color: #000000; /* داكن جداً */
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    font-weight: 350;
+    margin-bottom: 25px;
+    line-height: 1.2;
+}
+
+.hero-subtitle {
+    font-size: 18px;
+    margin-bottom: 50px;
+    color: #000000; /* رمادي داكن */
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 350;
+}
+
+.highlight {
+    color: #000000;
+    position: relative;
+    display: inline-block;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 350;
+}
+
+.highlight::after {
+    content: '';
+    position: absolute;
+    bottom: 5px;
+    left: 0;
+    width: 100%;
+    height: 8px;
+    background-color: rgb(0, 0, 0); /* ذهبي فاتح */
+    z-index: -1;
+}
+
+.contact-section {
+    padding: 80px 0;
+    position: relative;
+    background-color: #fff; /* خلفية بيضاء */
+}
+
+.section-title {
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    margin-bottom: 50px;
+    font-weight: 350;
+    position: relative;
+    color: #000000; /* نص داكن */
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    width: 100px;
+    height: 4px;
+}
+
+.contact-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-bottom: 60px;
+}
+
+.contact-card {
+    background-color: #fff; /* خلفية بيضاء للكروت */
+    border-radius: 20px;
+    padding: 40px 30px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.contact-card::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+}
+
+.contact-icon-container {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 25px;
+}
+
+.contact-icon {
+    font-size: 30px;
+    color: var(--primary-white); /* لون ذهبي للأيقونات */
+}
+
+.contact-card h3 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    font-weight: 350;
+    color: #000000; /* نص داكن */
+    font-family: 'Montserrat', sans-serif;
+}
+
+.contact-card p {
+    color: #000000; /* نص رمادي داكن */
+    margin-bottom: 25px;
+    font-weight: 350;
+    font-size: 14px;
+    line-height: 1.6;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.contact-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: linear-gradient(var(--primary-white));
+    color: #fff; /* نص أبيض على الأزرار */
+    padding: 14px 28px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 350;
+    font-size: 14px;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.contact-btn:hover {
+    transform: translateY(-3px);
+}
+
+.calendar-section {
+    padding: 80px 0;
+    background-color: #f9f9f9; /* خلفية فاتحة */
+    position: relative;
+}
+
+.calendar-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    background-color: #fff; /* خلفية بيضاء */
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: var(--box-shadow);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.calendar-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    color: var(--primary-white);
+    font-weight: 350;
+}
+
+.calendar-subtitle {
+    color: #000000; /* رمادي داكن */
+    font-size: 18px;
+    max-width: 350px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 350;
+}
+
+.calendar-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+@media (max-width: 992px) {
+    .calendar-content {
+        grid-template-columns: 1fr;
+    }
+}
+
+.calendar-widget {
+    background-color: #f9f9f9; /* خلفية فاتحة */
+    border-radius: 15px;
+    padding: 30px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+#calendar {
+    width: 100%;
+    min-height: 350px;
+}
+
+.booking-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    margin-bottom: 8px;
+    font-weight: 350;
+    color: #000000; /* رمادي داكن */
+    font-size: 14px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.form-group input,
+.form-group select {
+    padding: 14px 18px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    color: #000000; /* نص داكن */
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    font-weight: 350;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: var(--primary-white);
+    box-shadow: 0 0 0 3px rgba(201, 168, 106, 0.1);
+}
+
+.time-slots {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.time-slot {
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 6px;
+    text-align: center;
+    cursor: pointer;
+    font-size: 14px;
+    color: #333;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 350;
+}
+
+.time-slot:hover {
+    background-color: rgba(201, 168, 106, 0.1);
+    border-color: var(--gold);
+}
+
+.time-slot.selected {
+    background-color: var(--gold);
+    color: #fff;
+    border-color: var(--gold);
+    font-weight: 350;
+}
+
+.book-btn {
+    color: #fff; /* نص أبيض */
+    border: none;
+    padding: 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 350;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 15px;
+    background: linear-gradient(135deg, var(--gold), var(--dark-gold));
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Email Form Section */
+.email-section {
+    padding: 80px 0;
+    position: relative;
+    background-color: #fff;
+}
+
+.email-form-container {
+    max-width: 900px;
+    margin: 0 auto;
+    background-color: #fff; /* خلفية بيضاء */
+    border-radius: 20px;
+    padding: 50px 40px;
+    box-shadow: var(--box-shadow);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    position: relative;
+    overflow: hidden;
+}
+
+.email-form-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.form-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    margin-bottom: 40px;
+    text-align: center;
+    color: var(--primary-white);
+    font-weight: 350;
+}
+
+.email-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.email-form .form-group.full-width {
+    grid-column: 1 / -1;
+}
+
+.email-form textarea {
+    min-height: 150px;
+    resize: vertical;
+    padding: 16px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    color: #333; /* نص داكن */
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    width: 100%;
+    font-weight: 350;
+}
+
+.email-form textarea:focus {
+    outline: none;
+    border-color: var(--gold);
+    box-shadow: 0 0 0 3px rgba(201, 168, 106, 0.1);
+}
+
+.submit-btn {
+    grid-column: 1 / -1;
+    background: linear-gradient(135deg, var(--primary-white), var(--primary-white));
+    color: #fff; /* نص أبيض */
+    border: none;
+    padding: 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 350;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+    transition: all 0.3s ease;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.submit-btn i {
+    transition: all 0.3s ease;
+}
+
+.submit-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(212, 175, 55, 0.3);
+}
+
+.submit-btn:hover i {
+    transform: translateX(3px);
+}
+
+/* Success Message */
+.success-message {
+    display: none;
+    background-color: rgba(76, 175, 80, 0.1);
+    border: 1px solid #4CAF50;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 20px;
+    text-align: center;
+    color: #333;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 350;
+}
+
+.success-message i {
+    font-size: 36px;
+    color: #4CAF50;
+    margin-bottom: 10px;
+}
+
+.success-message h3 {
+    font-size: 14px;
+    margin-bottom: 10px;
+    font-weight: 350;
+}
+
+.success-message p {
+    font-size: 14px;
+    font-weight: 350;
+}
+
+/* Footer Styles */
+.jda-footer {
+    background: rgb(0, 0, 0);
+    color: #fff;
+    padding: 60px 70px 40px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.footer-inner {
+    max-width: 1800px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+/* LEFT */
+.footer-left {
+    display: flex;
+    gap: 25px;
+}
+
+.footer-logo {
+    background: #8b0000;
+    width: 70px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 350;
+    letter-spacing: 2px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.footer-details h3 {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 350;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.footer-role {
+    font-size: 14px;
+    color: #ddd;
+    font-weight: 350;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.footer-contact {
+    display: flex;
+    gap: 50px;
+    font-size: 14px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 350;
+}
+
+.footer-contact a {
+    color: #fff;
+    text-decoration: underline;
+    font-size: 14px;
+    font-weight: 350;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.footer-bottom-left {
+    font-size: 14px;
+    color: #ccc;
+    font-weight: 350;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.footer-bottom-left a {
+    color: #ccc;
+    text-decoration: underline;
+    font-size: 14px;
+    font-weight: 350;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.footer-right {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    text-align: left;
+}
+
+.riba-title {
+    font-size: 14px;
+    letter-spacing: 4px;
+    font-weight: 350;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.riba-sub {
+    display: block;
+    font-size: 14px;
+    font-weight: 350;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.arb-title {
+    font-size: 14px;
+    font-weight: 350;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.arb-sub {
+    display: block;
+    font-size: 14px;
+    color: #ddd;
+    font-weight: 350;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .footer-inner {
+        flex-direction: column;
+        gap: 50px;
+    }
+
+    .footer-right {
+        align-items: flex-start;
+    }
+}
+
+.footer-images {
+    display: grid;
+    grid-template-columns: repeat(2, 120px);
+    gap: 15px;
+}
+
+.footer-images img {
+    width: 100%;
+    height: 90px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.2);
+    transition: 0.3s ease;
+}
+
+.footer-images img:hover {
+    transform: scale(1.05);
+    border-color: var(--gold);
+}
+
+/* Notification */
+.notification {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #333; /* خلفية داكنة */
+    color: #fff; /* نص أبيض */
+    padding: 15px 20px;
+    border-radius: 8px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 9999;
+    transform: translateY(100px);
+    opacity: 0;
+    transition: all 0.3s ease;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 350;
+}
+
+.notification.active {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.close-notification {
+    cursor: pointer;
+    font-size: 14px;
+    transition: color 0.3s ease;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 350;
+}
+
+.close-notification:hover {
+    color: var(--gold);
+}
+
+/* تحسينات إضافية للنصوص */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif !important;
+    font-weight: 350 !important;
+}
+
+p, span, div, a, button, input, textarea, select, label {
+    font-family: 'Montserrat', sans-serif !important;
+    font-weight: 350 !important;
+}
+
+/* ضبط حجم الخط الأساسي */
+body, html {
+    font-size: 14px;
+}
+    </style>
+</head>
+
+<body>
+   <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+    <a href="index.html">
+        <h1>Vellora Design</h1>
+    </a>
+            </div>
+            
+            <!-- اللينكات على اليمين -->
+            <ul class="nav-links">
+                <li><a href="Studio.html" class="nav-link">Studio</a></li>
+                <li><a href="Projects.html" class="nav-link">Projects</a></li>
+                <li><a href="News.html" class="nav-link">News</a></li>
+                <li><a href="Contact.html" class="nav-link">Contact</a></li>
+            </ul>
+            
+            <!-- زر القائمة للجوال -->
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+    <!-- Cart Modal -->
+    <div class="cart-modal" id="cartModal">
+        <div class="cart-modal-content">
+            <div class="cart-modal-header">
+                <h3>Shopping Cart</h3>
+                <button class="close-cart" id="closeCart">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            </div>
+            <div class="cart-modal-body" id="cartModalBody">
+                <!-- Cart items will be loaded here -->
+            </div>
+            <div class="cart-modal-footer">
+                <div class="cart-total">
+                    Total: <span id="cartTotalPrice">$0.00</span>
+                </div>
+                <div class="cart-actions">
+                    <button class="cart-btn clear-cart-btn" id="clearCartBtn">Clear Cart</button>
+                    <button class="cart-btn checkout-btn" id="checkoutBtn" disabled>Checkout</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification -->
+    <div class="notification" id="notification">
+        <span id="notificationMessage"></span>
+        <span class="material-symbols-outlined close-notification" id="closeNotification">close</span>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-bg"></div>
+        <div class="container hero-content">
+            <h1 class="hero-title">Connect With <span class="highlight">Architecture Experts</span></h1>
+            <p class="hero-subtitle">Let’s Build Something Exceptional Together.</p>
+        </div>
+    </section>
+
+    <!-- Contact Options Section -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+
+            <div class="contact-options">
+                <!-- WhatsApp Card -->
+                <div class="contact-card" id="whatsapp-card">
+                    <div class="contact-icon-container">
+                        <div class="contact-icon">
+                            <i class="fab fa-whatsapp"></i>
+                        </div>
+                    </div>
+                    <h3>WhatsApp Direct</h3>
+                    <p>Get instant responses to your queries via WhatsApp. Our support team is available Monday to
+                        Friday, 9 AM to 6 PM.</p>
+                    <a href="https://wa.me/447470631885?text=Hi%20ArchitectureHub%2C%20I%20need%20assistance%20with%20an%20architectural%20project"
+                        target="_blank" class="contact-btn" id="whatsapp-btn">
+                        <i class="fab fa-whatsapp"></i> Start Chat Now
+                    </a>
+                </div>
+
+                <!-- Calendar Booking Card -->
+                <div class="contact-card" id="calendar-card">
+                    <div class="contact-icon-container">
+                        <div class="contact-icon">
+                            <i class="far fa-calendar-alt"></i>
+                        </div>
+                    </div>
+                    <h3>Schedule Appointment</h3>
+                    <p>Book a one-on-one consultation with our architecture experts. Choose a time that works best for
+                        your schedule.</p>
+                    <a href="#calendar-booking" class="contact-btn" id="schedule-btn">
+                        <i class="far fa-calendar-check"></i> Book Appointment
+                    </a>
+                </div>
+
+                <!-- Email Card -->
+                <div class="contact-card" id="email-card">
+                    <div class="contact-icon-container">
+                        <div class="contact-icon">
+                            <i class="far fa-envelope"></i>
+                        </div>
+                    </div>
+                    <h3>Email Support</h3>
+                    <p>Send us detailed project inquiries or technical questions. We respond within 24 hours with
+                        comprehensive solutions.</p>
+                    <a href="#email-form" class="contact-btn" id="email-link-btn">
+                        <i class="far fa-paper-plane"></i> Send Message
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Email Form Section -->
+    <section class="email-section" id="email-form">
+        <div class="container">
+            <div class="email-form-container">
+                <h3 class="form-title">Send Us a Message</h3>
+                <form id="contactForm" class="email-form">
+                    <div class="form-group">
+                        <label for="name">Full Name *</label>
+                        <input type="text" id="form-name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="form-email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="form-phone">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject">Subject *</label>
+                        <input type="text" id="form-subject" required>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="message">Your Message *</label>
+                        <textarea id="form-message" required
+                            placeholder="Please provide details about your architectural project or inquiry..."></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-btn">
+                        Send Message <i class="far fa-paper-plane"></i>
+                    </button>
+                </form>
+
+                <div class="success-message" id="success-message">
+                    <i class="fas fa-check-circle"></i>
+                    <h3>Message Sent Successfully!</h3>
+                    <p>Thank you for contacting ArchitectureHub. We will respond to your inquiry within 24 hours.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="jda-footer">
+        <div class="footer-inner">
+            <!-- Left block -->
+            <div class="footer-left">
+                <div class="footer-logo">V</div>
+
+                <div class="footer-details">
+                    <h3>Vellora Design </h3>
+                    <p class="footer-role">Architecture | Design | Management</p>
+
+                    <div class="footer-contact">
+                        <div class="address">
+                            Omega Building Smugglers Way, Riverside West, London SW18 1AZ
+                        </div>
+
+                        <div class="contact-links">
+                            <a href="tel:01623863222">01623 863 222</a><br>
+                            <a href="mailto:mail@jacksondesign.co.uk">
+                                mail@jacksondesign.co.uk
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="footer-bottom-left">
+                        <a href="#">Privacy Policy</a><br>
+                        © 2026 Vellora Design
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right block -->
+            <!-- Right block - Images -->
+<div class="footer-images">
+  <img src="https://iili.io/fi2fBKQ.jpg" alt="Project Image 1">
+  <img src="https://iili.io/fi2BlwX.jpg" alt="Project Image 2">
+</div>
+
+        </div>
+    </footer>
+    
+    <!-- External Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            /* ================= CART SYSTEM ================= */
+            let cart = JSON.parse(localStorage.getItem('shoppingCart')) || [];
+
+            function saveCart() {
+                localStorage.setItem('shoppingCart', JSON.stringify(cart));
+            }
+
+            function updateCartCount() {
+                const count = cart.reduce((t, i) => t + i.quantity, 0);
+                const desktop = document.getElementById('desktopCartCount');
+                const mobile = document.getElementById('mobileCartCount');
+                if (desktop) desktop.textContent = count;
+                if (mobile) {
+                    mobile.textContent = count;
+                    mobile.style.display = count > 0 ? 'flex' : 'none';
+                }
+            }
+
+            function addToCart(product) {
+                const item = cart.find(i => i.id === product.id);
+                if (item) {
+                    item.quantity++;
+                } else {
+                    cart.push({ ...product, quantity: 1 });
+                }
+                saveCart();
+                updateCartCount();
+                showNotification('Added to cart');
+            }
+
+            function removeFromCart(index) {
+                cart.splice(index, 1);
+                saveCart();
+                updateCartCount();
+            }
+
+            function increaseQuantity(index) {
+                cart[index].quantity++;
+                saveCart();
+                updateCartCount();
+            }
+
+            function decreaseQuantity(index) {
+                if (cart[index].quantity > 1) {
+                    cart[index].quantity--;
+                } else {
+                    cart.splice(index, 1);
+                }
+                saveCart();
+                updateCartCount();
+            }
+
+            function addSampleProducts() {
+                if (cart.length > 0) return;
+                addToCart({
+                    id: 1,
+                    name: 'Architectural Consultation',
+                    price: 299.99
+                });
+            }
+
+            /* ================= CONTACT FORM ================= */
+            const contactForm = document.getElementById('contactForm');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function (e) {
+                    e.preventDefault();
+                    const btn = document.querySelector('.submit-btn');
+                    const original = btn.innerHTML;
+
+                    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+                    btn.disabled = true;
+
+                    setTimeout(() => {
+                        contactForm.reset();
+                        btn.innerHTML = original;
+                        btn.disabled = false;
+                        showNotification('Message sent successfully');
+                    }, 1500);
+                });
+            }
+
+            /* ================= AUTH ================= */
+            function updateAuthStatus() {
+                const desktop = document.getElementById('desktopAuthText');
+                const mobile = document.getElementById('mobileAuthText');
+                const logged = localStorage.getItem('currentUser');
+
+                const text = logged ? 'Logout' : 'Login';
+                if (desktop) desktop.textContent = text;
+                if (mobile) mobile.textContent = text;
+            }
+
+            window.toggleAuth = function () {
+                if (localStorage.getItem('currentUser')) {
+                    localStorage.removeItem('currentUser');
+                    showNotification('Logged out');
+                } else {
+                    window.location.href = 'registar.html';
+                }
+                updateAuthStatus();
+            };
+
+            /* ================= NOTIFICATION ================= */
+            function showNotification(message) {
+                const box = document.getElementById('notification');
+                const text = document.getElementById('notificationMessage');
+                if (!box || !text) return;
+
+                text.textContent = message;
+                box.classList.add('active');
+
+                setTimeout(() => box.classList.remove('active'), 3000);
+            }
+
+            /* ================= INIT ================= */
+            updateCartCount();
+            updateAuthStatus();
+            addSampleProducts();
+
+            // expose functions
+            window.addToCart = addToCart;
+            window.removeFromCart = removeFromCart;
+            window.increaseQuantity = increaseQuantity;
+            window.decreaseQuantity = decreaseQuantity;
+            
+            /* ================= NAVBAR SCROLL EFFECT ================= */
+            
+            
+            /* ================= MOBILE MENU TOGGLE ================= */
+            const hamburger = document.querySelector('.hamburger');
+            const navLinks = document.querySelector('.nav-links');
+
+            if (hamburger && navLinks) {
+                hamburger.addEventListener('click', () => {
+                    navLinks.classList.toggle('active');
+                    
+                    // تحريك الأشرطة لإنشاء علامة X
+                    const bars = document.querySelectorAll('.bar');
+                    if (navLinks.classList.contains('active')) {
+                        bars[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+                        bars[1].style.opacity = '0';
+                        bars[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
+                    } else {
+                        bars[0].style.transform = 'none';
+                        bars[1].style.opacity = '1';
+                        bars[2].style.transform = 'none';
+                    }
+                });
+                
+                // إغلاق القائمة عند النقر على رابط
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    link.addEventListener('click', () => {
+                        navLinks.classList.remove('active');
+                        const bars = document.querySelectorAll('.bar');
+                        bars[0].style.transform = 'none';
+                        bars[1].style.opacity = '1';
+                        bars[2].style.transform = 'none';
+                    });
+                });
+            }
+            
+            /* ================= SMOOTH SCROLL ================= */
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 100,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
