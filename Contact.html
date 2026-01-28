@@ -15,54 +15,42 @@
     padding: 0;
     box-sizing: border-box;
 }
-/* تقليل المسافات بين السكاشن */
-.hero {
-  padding: 110px 0 10px; /* كان 120px 0 80px */
+
+/* إخفاء شريط التمرير */
+html, body {
+    overflow: hidden;
+    height: 100%;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
 
-.contact-section,
-.email-section,
-.calendar-section {
-  padding: 10px 0; /* كان 80px 0 */
-}
-
-/* تقليل المسافة تحت العناوين */
-.section-title {
-  margin-bottom: 25px; /* كان 50px */
-}
-
-/* تقليل المسافة تحت كروت التواصل */
-.contact-options {
-  margin-bottom: 25px; /* كان 60px */
-}
-
-/* لو لسه فيه فراغ زيادة بسبب container بتاع الفورم */
-.email-form-container,
-.calendar-container {
-  padding: 30px 25px; /* كان 50/40 */
+body::-webkit-scrollbar {
+    display: none;
 }
 
 body {
-    overflow-y: hidden; /* لإخفاء شريط التمرير العمودي فقط */
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
 }
+
 :root {
     --white: #ffffff;
-    --gold: #D4AF37;
+    --gold: #000000;
     --gray: #333;
     --light-gray: #999;
-    --primary-black: #ffffff; /* تغيير من أسود إلى أبيض */
-    --secondary-black: #f5f5f5; /* خلفية فاتحة */
+    --primary-black: #ffffff;
+    --secondary-black: #f5f5f5;
 }
 
 body {
     font-family: 'Montserrat', sans-serif;
-    background-color: var(--primary-black); /* الآن أبيض */
-    color: #000000; /* تغيير النص الرئيسي إلى داكن */
+    background-color: var(--primary-black);
+    color: #000000;
     line-height: 1.6;
     overflow-x: hidden;
 }
 
-/* النافبار المعدل: لوجو شمال - لينكات يمين */
+/* النافبار */
 .navbar {
     position: fixed;
     top: 0;
@@ -70,12 +58,12 @@ body {
     width: 100%;
     z-index: 1000;
     padding: 30px 0;
-    background-color: #000000; /* خلفية بيضاء */
+    background-color: #000000;
     transition: all 0.3s ease;
 }
 
 .navbar.scrolled {
-    background-color: rgba(0, 0, 0, 0.98); /* أبيض مع شفافية خفيفة */
+    background-color: rgba(0, 0, 0, 0.98);
     padding: 20px 0;
     backdrop-filter: blur(10px);
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
@@ -90,35 +78,21 @@ body {
     align-items: center;
 }
 
-/* اللوجو على الشمال */
+/* اللوجو */
 .logo {
     flex: 0 0 auto;
 }
-html, body {
-    overflow: hidden; /* يخفي شريط التمرير */
-    height: 100%;
-    -ms-overflow-style: none;  /* ل Internet Explorer و Edge */
-    scrollbar-width: none;  /* ل Firefox */
-}
-body::-webkit-scrollbar {
-    display: none; /* ل Chrome, Safari و Opera */
-}
 
-/* السماح بالتمرير داخل المحتوى إذا لزم الأمر */
-body {
-    overflow-y: auto; /* يسمح بالتمرير داخل body */
-    -webkit-overflow-scrolling: touch; /* لمسة سلسة على الجوال */
-}
 .logo h1 {
     font-size: 16.5px;
     font-weight: 350;
     letter-spacing: 2px;
-    color: #ffffff; /* لون أسود للنص */
+    color: #ffffff;
     white-space: nowrap;
     font-family: 'Montserrat', sans-serif;
 }
 
-/* اللينكات على اليمين */
+/* اللينكات */
 .nav-links {
     display: flex;
     gap: 40px;
@@ -126,7 +100,7 @@ body {
 }
 
 .nav-link {
-    color: #f3f3f3; /* لون داكن للروابط */
+    color: #f3f3f3;
     text-decoration: none;
     font-size: 14px;
     font-weight: 350;
@@ -152,12 +126,14 @@ body {
     background-color: var(--gold);
     transition: width 0.3s ease;
 }
-                      .logo a,
+
+.logo a,
 .logo a:hover,
 .logo a:focus,
 .logo a:active {
     text-decoration: none;
 }
+
 .nav-link:hover::after {
     width: 100%;
 }
@@ -175,7 +151,7 @@ body {
 .bar {
     width: 25px;
     height: 1px;
-    background-color: #000000; /* خطوط داكنة */
+    background-color: #000000;
     transition: 0.3s;
 }
 
@@ -203,7 +179,7 @@ body {
         left: 0;
         width: 100%;
         height: auto;
-        background-color: rgba(255, 255, 255, 0.98); /* خلفية بيضاء */
+        background-color: rgba(255, 255, 255, 0.98);
         backdrop-filter: blur(10px);
         display: flex;
         flex-direction: column;
@@ -234,449 +210,35 @@ body {
     }
 }
 
-/* تذييل الصفحة */
-@media (max-width: 767px) {
-    footer {
-        padding: 1.5rem 1rem 1rem;
-    }
-
-    .footer-grid {
-        gap: 1.5rem;
-    }
-
-    .footer-logo-text {
-        font-size: 1.2rem;
-    }
-
-    .footer-logo-icon {
-        font-size: 1.5rem;
-        padding: 6px;
-    }
-
-    .footer-title {
-        font-size: 1rem;
-    }
-
-    .footer-link {
-        font-size: 0.85rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .footer-about-text {
-        font-size: 0.85rem;
-    }
-
-    .footer-contact p {
-        font-size: 0.85rem;
-    }
-
-    .social-link {
-        width: 32px;
-        height: 32px;
-    }
-
-    .social-link svg {
-        width: 16px;
-        height: 16px;
-    }
-}
-
-@media (min-width: 640px) {
-    .footer-bottom {
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-    }
-}
-
-.copyright {
-    font-family: 'Montserrat', sans-serif;
-    color: #666;
-    font-size: 0.85rem;
-    order: 2;
-    font-weight: 350;
-}
-
-@media (min-width: 640px) {
-    .copyright {
-        order: 1;
-    }
-}
-
-.social-links {
-    display: flex;
-    gap: 0.8rem;
-    order: 1;
-}
-
-@media (min-width: 640px) {
-    .social-links {
-        order: 2;
-    }
-}
-
-.social-link {
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    background: rgba(0, 0, 0, 0.05);
+/* ============ HERO SECTION (الجديدة) ============ */
+.hero-section {
+    min-height: 100vh;
     display: flex;
     align-items: center;
-    justify-content: center;
-    color: #555;
-    text-decoration: none;
-    transition: all 0.2s ease;
-    border: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 150px 0 80px;
+    background-color: #fff;
 }
 
-.social-link:hover {
-    background: rgba(212, 175, 55, 0.1);
-    color: #D4AF37;
-    border-color: #D4AF37;
-    transform: translateY(-2px);
-}
-
-.social-link svg {
-    width: 18px;
-    height: 18px;
-}
-
-:root {
-    --background-dark: #ffffff; /* فاتح بدلاً من داكن */
-    --border-dark: #000000;
-    --primary: #C9A86A;
-    --text-white: #000000; /* تغيير إلى داكن */
-    --primary-black: #ffffff; /* أبيض */
-    --secondary-black: #f5f5f5; /* رمادي فاتح */
-    --primary-white: #000000; /* داكن للنص */
-    --secondary-white: #000000; /* رمادي داكن للنص الثانوي */
-    --gold: #da9f52;
-    --light-gold: #333; /* داكن */
-    --dark-gold: #000000;
-    --accent-gold: #333; /* داكن */
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-.container {
+.hero-container {
     max-width: 1400px;
     margin: 0 auto;
-    padding: 0 30px;
-}
-
-.cart-modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
+    padding: 0 40px;
     width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
-    z-index: 10000;
-    justify-content: center;
-    align-items: center;
-}
-
-.cart-modal.active {
-    display: flex;
-}
-
-.cart-modal-content {
-    background-color: #fff; /* خلفية بيضاء */
-    color: #333; /* نص داكن */
-    width: 90%;
-    max-width: 800px;
-    max-height: 80vh;
-    border-radius: 20px;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    animation: slideIn 0.3s ease-out;
-    font-family: 'Montserrat', sans-serif;
-}
-
-@keyframes slideIn {
-    from {
-        transform: translateY(-50px);
-        opacity: 0;
-    }
-
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-
-.cart-modal-header {
-    padding: 20px 30px;
-    background-color: #f9f9f9;
-    border-bottom: 1px solid var(--border-dark);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.cart-modal-header h3 {
-    font-size: 14px;
-    color: var(--gold);
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 350;
-}
-
-.close-cart {
-    background: none;
-    border: none;
-    color: #333;
-    font-size: 14px;
-    cursor: pointer;
-    transition: color 0.3s ease;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 350;
-}
-
-.close-cart:hover {
-    color: var(--gold);
-}
-
-.cart-modal-body {
-    padding: 30px;
-    overflow-y: auto;
-    flex-grow: 1;
-}
-
-.cart-empty {
-    text-align: center;
-    padding: 40px 20px;
-    color: #000000;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 350;
-}
-
-.cart-empty .material-symbols-outlined {
-    font-size: 64px;
-    color: var(--gold);
-    margin-bottom: 20px;
-    opacity: 0.5;
-}
-
-.cart-items {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-.cart-item {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    padding: 20px;
-    background-color: rgba(0, 0, 0, 0.02);
-    border-radius: 10px;
-    border: 1px solid rgba(0, 0, 0, 0.08);
-}
-
-.cart-item-image {
-    width: 80px;
-    height: 80px;
-    background-color: #f5f5f5;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 32px;
-    color: var(--gold);
-}
-
-.cart-item-details {
-    flex-grow: 1;
-}
-
-.cart-item-name {
-    font-size: 14px;
-    font-weight: 350;
-    margin-bottom: 5px;
-    color: #333;
-    font-family: 'Montserrat', sans-serif;
-}
-
-.cart-item-price {
-    color: var(--gold);
-    font-weight: 350;
-    font-size: 14px;
-    font-family: 'Montserrat', sans-serif;
-}
-
-.cart-item-controls {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-
-.quantity-controls {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.quantity-btn {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    background-color: #f5f5f5;
-    border: 1px solid var(--gold);
-    color: var(--gold);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 350;
-}
-
-.quantity-btn:hover {
-    background-color: var(--gold);
-    color: #fff;
-}
-
-.cart-item-quantity {
-    font-size: 14px;
-    font-weight: 350;
-    min-width: 30px;
-    text-align: center;
-    color: #333;
-    font-family: 'Montserrat', sans-serif;
-}
-
-.remove-item {
-    background: none;
-    border: none;
-    color: #ff4757;
-    cursor: pointer;
-    font-size: 14px;
-    transition: color 0.3s ease;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 350;
-}
-
-.remove-item:hover {
-    color: #ff6b81;
-}
-
-.cart-modal-footer {
-    padding: 20px 30px;
-    background-color: #f9f9f9;
-    border-top: 1px solid var(--border-dark);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.cart-total {
-    font-size: 14px;
-    font-weight: 350;
-    color: #333;
-    font-family: 'Montserrat', sans-serif;
-}
-
-.cart-total span {
-    color: var(--gold);
-}
-
-.cart-actions {
-    display: flex;
-    gap: 15px;
-}
-
-.cart-btn {
-    padding: 12px 30px;
-    border-radius: 8px;
-    font-weight: 350;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    border: 2px solid transparent;
-    font-size: 14px;
-    font-family: 'Montserrat', sans-serif;
-}
-
-.clear-cart-btn {
-    background-color: transparent;
-    border-color: #ff4757;
-    color: #ff4757;
-}
-
-.clear-cart-btn:hover {
-    background-color: rgba(255, 71, 87, 0.1);
-}
-
-.checkout-btn {
-    background: linear-gradient(135deg, var(--gold), var(--dark-gold));
-    color: #fff;
-    border: none;
-}
-
-.checkout-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(201, 168, 106, 0.3);
-}
-
-.checkout-btn:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-    transform: none !important;
-    box-shadow: none !important;
-}
-
-.hero {
-    color: #000000; /* نص داكن */
-    padding: 120px 0 80px;
-    position: relative;
-    overflow: hidden;
-    background-color: #fff; /* خلفية بيضاء */
-}
-
-.hero-bg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
 }
 
 .hero-content {
-    max-width: 900px;
-    margin: 0 auto;
     text-align: center;
-    position: relative;
+    max-width: 900px;
+    margin: 0 auto 60px;
 }
 
 .hero-title {
-    color: #000000; /* داكن جداً */
+    color: #000000;
     font-family: 'Montserrat', sans-serif;
     font-size: 20px;
     font-weight: 350;
     margin-bottom: 25px;
     line-height: 1.2;
-}
-
-.hero-subtitle {
-    font-size: 18px;
-    margin-bottom: 50px;
-    color: #000000; /* رمادي داكن */
-    max-width: 700px;
-    margin-left: auto;
-    margin-right: auto;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 350;
 }
 
 .highlight {
@@ -694,57 +256,60 @@ html {
     left: 0;
     width: 100%;
     height: 8px;
-    background-color: rgb(0, 0, 0); /* ذهبي فاتح */
+    background-color: rgba(212, 175, 55, 0.3);
     z-index: -1;
 }
 
-.contact-section {
-    padding: 80px 0;
-    position: relative;
-    background-color: #fff; /* خلفية بيضاء */
-}
-
-.section-title {
-    text-align: center;
+.hero-subtitle {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: #000000;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
     font-family: 'Montserrat', sans-serif;
-    font-size: 20px;
-    margin-bottom: 50px;
     font-weight: 350;
-    position: relative;
-    color: #000000; /* نص داكن */
+    line-height: 1.6;
 }
 
-.section-title::after {
-    content: '';
-    position: absolute;
-    bottom: -20px;
-    left: 50%;
-    width: 100px;
-    height: 4px;
-}
-
-.contact-options {
+/* Contact Cards Grid - داخل الـ Hero */
+.contact-cards-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 30px;
-    margin-bottom: 60px;
+    margin-top: 40px;
 }
 
+@media (max-width: 992px) {
+    .contact-cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .contact-cards-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+}
+
+/* Contact Card Styles */
 .contact-card {
-    background-color: #fff; /* خلفية بيضاء للكروت */
-    border-radius: 20px;
-    padding: 40px 30px;
+    background-color: #fff;
+    border-radius: 16px; /* كان 20px */
+    padding: 30px 25px; /* كان 40px 30px */
     text-align: center;
     position: relative;
     overflow: hidden;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05); /* كان 0 5px 15px */
+    transition: all 0.3s ease;
 }
 
-.contact-card::before {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 5px;
+.contact-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    border-color: var(--gold);
 }
 
 .contact-icon-container {
@@ -755,227 +320,70 @@ html {
     align-items: center;
     justify-content: center;
     margin: 0 auto 25px;
+    background-color: rgba(212, 175, 55, 0.1);
 }
 
 .contact-icon {
     font-size: 30px;
-    color: var(--primary-white); /* لون ذهبي للأيقونات */
+    color: var(--gold);
 }
 
 .contact-card h3 {
     font-size: 18px;
     margin-bottom: 15px;
     font-weight: 350;
-    color: #000000; /* نص داكن */
+    color: #000000;
     font-family: 'Montserrat', sans-serif;
 }
 
 .contact-card p {
-    color: #000000; /* نص رمادي داكن */
+    color: #666;
     margin-bottom: 25px;
     font-weight: 350;
     font-size: 14px;
     line-height: 1.6;
     font-family: 'Montserrat', sans-serif;
+    min-height: 70px;
 }
 
 .contact-btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
-    background: linear-gradient(var(--primary-white));
-    color: #fff; /* نص أبيض على الأزرار */
-    padding: 14px 28px;
+    gap: 8px; /* كان 10px */
+    background-color: var(--gold);
+    color: #fff;
+    padding: 12px 24px; /* كان 14px 28px */
     border-radius: 50px;
     text-decoration: none;
     font-weight: 350;
-    font-size: 14px;
+    font-size: 13px; /* كان 14px */
     border: 2px solid transparent;
     transition: all 0.3s ease;
     font-family: 'Montserrat', sans-serif;
-}
-
-.contact-btn:hover {
-    transform: translateY(-3px);
-}
-
-.calendar-section {
-    padding: 80px 0;
-    background-color: #f9f9f9; /* خلفية فاتحة */
-    position: relative;
-}
-
-.calendar-container {
-    max-width: 1100px;
-    margin: 0 auto;
-    background-color: #fff; /* خلفية بيضاء */
-    border-radius: 20px;
-    padding: 40px;
-    box-shadow: var(--box-shadow);
-    border: 1px solid rgba(0, 0, 0, 0.08);
-}
-
-.calendar-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 30px;
-    flex-wrap: wrap;
-    gap: 15px;
-}
-
-.calendar-title {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 14px;
-    color: var(--primary-white);
-    font-weight: 350;
-}
-
-.calendar-subtitle {
-    color: #000000; /* رمادي داكن */
-    font-size: 18px;
-    max-width: 350px;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 350;
-}
-
-.calendar-content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 30px;
-}
-
-@media (max-width: 992px) {
-    .calendar-content {
-        grid-template-columns: 1fr;
-    }
-}
-
-.calendar-widget {
-    background-color: #f9f9f9; /* خلفية فاتحة */
-    border-radius: 15px;
-    padding: 30px;
-    border: 1px solid rgba(0, 0, 0, 0.08);
-}
-
-#calendar {
     width: 100%;
-    min-height: 350px;
+    max-width: 200px; /* كان 220px */
 }
 
-.booking-form {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
 
-.form-group {
-    display: flex;
-    flex-direction: column;
-}
 
-.form-group label {
-    margin-bottom: 8px;
-    font-weight: 350;
-    color: #000000; /* رمادي داكن */
-    font-size: 14px;
-    font-family: 'Montserrat', sans-serif;
-}
-
-.form-group input,
-.form-group select {
-    padding: 14px 18px;
-    background-color: rgba(255, 255, 255, 0.9);
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    color: #000000; /* نص داكن */
-    font-family: 'Montserrat', sans-serif;
-    font-size: 14px;
-    transition: all 0.3s ease;
-    font-weight: 350;
-}
-
-.form-group input:focus,
-.form-group select:focus {
-    outline: none;
-    border-color: var(--primary-white);
-    box-shadow: 0 0 0 3px rgba(201, 168, 106, 0.1);
-}
-
-.time-slots {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 8px;
-    margin-top: 8px;
-}
-
-.time-slot {
-    padding: 10px;
-    background-color: rgba(255, 255, 255, 0.9);
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    border-radius: 6px;
-    text-align: center;
-    cursor: pointer;
-    font-size: 14px;
-    color: #333;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 350;
-}
-
-.time-slot:hover {
-    background-color: rgba(201, 168, 106, 0.1);
-    border-color: var(--gold);
-}
-
-.time-slot.selected {
-    background-color: var(--gold);
-    color: #fff;
-    border-color: var(--gold);
-    font-weight: 350;
-}
-
-.book-btn {
-    color: #fff; /* نص أبيض */
-    border: none;
-    padding: 16px;
-    border-radius: 8px;
-    font-size: 14px;
-    font-weight: 350;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    margin-top: 15px;
-    background: linear-gradient(135deg, var(--gold), var(--dark-gold));
-    font-family: 'Montserrat', sans-serif;
-}
+/* ============ باقي الأقسام ============ */
 
 /* Email Form Section */
 .email-section {
     padding: 80px 0;
     position: relative;
-    background-color: #fff;
+    background-color: #f9f9f9;
 }
 
 .email-form-container {
     max-width: 900px;
     margin: 0 auto;
-    background-color: #fff; /* خلفية بيضاء */
+    background-color: #fff;
     border-radius: 20px;
     padding: 50px 40px;
-    box-shadow: var(--box-shadow);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
     border: 1px solid rgba(0, 0, 0, 0.08);
-    position: relative;
-    overflow: hidden;
-}
-
-.email-form-container::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
 }
 
 .form-title {
@@ -983,8 +391,9 @@ html {
     font-size: 14px;
     margin-bottom: 40px;
     text-align: center;
-    color: var(--primary-white);
+    color: #000000;
     font-weight: 350;
+    letter-spacing: 1px;
 }
 
 .email-form {
@@ -997,31 +406,51 @@ html {
     grid-column: 1 / -1;
 }
 
-.email-form textarea {
-    min-height: 150px;
-    resize: vertical;
-    padding: 16px;
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    margin-bottom: 8px;
+    font-weight: 350;
+    color: #333;
+    font-size: 14px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    padding: 14px 18px;
     background-color: rgba(255, 255, 255, 0.9);
     border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 8px;
-    color: #333; /* نص داكن */
+    color: #000000;
     font-family: 'Montserrat', sans-serif;
     font-size: 14px;
     transition: all 0.3s ease;
-    width: 100%;
     font-weight: 350;
 }
 
-.email-form textarea:focus {
+.form-group textarea {
+    min-height: 150px;
+    resize: vertical;
+    width: 100%;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
     outline: none;
     border-color: var(--gold);
-    box-shadow: 0 0 0 3px rgba(201, 168, 106, 0.1);
+    box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
 }
 
 .submit-btn {
     grid-column: 1 / -1;
-    background: linear-gradient(135deg, var(--primary-white), var(--primary-white));
-    color: #fff; /* نص أبيض */
+    background-color: var(--gold);
+    color: #fff;
     border: none;
     padding: 16px;
     border-radius: 8px;
@@ -1042,6 +471,7 @@ html {
 }
 
 .submit-btn:hover {
+    background-color: #c19b3e;
     transform: translateY(-3px);
     box-shadow: 0 10px 25px rgba(212, 175, 55, 0.3);
 }
@@ -1050,7 +480,6 @@ html {
     transform: translateX(3px);
 }
 
-/* Success Message */
 .success-message {
     display: none;
     background-color: rgba(76, 175, 80, 0.1);
@@ -1096,7 +525,6 @@ html {
     align-items: flex-start;
 }
 
-/* LEFT */
 .footer-left {
     display: flex;
     gap: 25px;
@@ -1159,53 +587,6 @@ html {
     font-family: 'Montserrat', sans-serif;
 }
 
-.footer-right {
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
-    text-align: left;
-}
-
-.riba-title {
-    font-size: 14px;
-    letter-spacing: 4px;
-    font-weight: 350;
-    font-family: 'Montserrat', sans-serif;
-}
-
-.riba-sub {
-    display: block;
-    font-size: 14px;
-    font-weight: 350;
-    font-family: 'Montserrat', sans-serif;
-}
-
-.arb-title {
-    font-size: 14px;
-    font-weight: 350;
-    font-family: 'Montserrat', sans-serif;
-}
-
-.arb-sub {
-    display: block;
-    font-size: 14px;
-    color: #ddd;
-    font-weight: 350;
-    font-family: 'Montserrat', sans-serif;
-}
-
-/* Responsive */
-@media (max-width: 900px) {
-    .footer-inner {
-        flex-direction: column;
-        gap: 50px;
-    }
-
-    .footer-right {
-        align-items: flex-start;
-    }
-}
-
 .footer-images {
     display: grid;
     grid-template-columns: repeat(2, 120px);
@@ -1226,13 +607,97 @@ html {
     border-color: var(--gold);
 }
 
+/* Responsive */
+@media (max-width: 900px) {
+    .footer-inner {
+        flex-direction: column;
+        gap: 50px;
+    }
+    
+    .hero-container {
+        padding: 0 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-section {
+        padding: 120px 0 60px;
+    }
+    
+    .hero-title {
+        font-size: 18px;
+    }
+    
+    .hero-subtitle {
+        font-size: 16px;
+    }
+    
+    .contact-card {
+        padding: 30px 20px;
+    }
+    
+    .contact-card p {
+        min-height: auto;
+        margin-bottom: 20px;
+    }
+    
+    .email-form-container {
+        padding: 30px 20px;
+    }
+    
+    .email-form {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-section {
+        padding: 100px 0 40px;
+    }
+    
+    .hero-title {
+        font-size: 16px;
+    }
+    
+    .hero-subtitle {
+        font-size: 14px;
+    }
+    
+    .contact-icon-container {
+        width: 60px;
+        height: 60px;
+        margin-bottom: 20px;
+    }
+    
+    .contact-icon {
+        font-size: 24px;
+    }
+    
+    .contact-card h3 {
+        font-size: 16px;
+    }
+    
+    .jda-footer {
+        padding: 40px 20px 30px;
+    }
+    
+    .footer-images {
+        grid-template-columns: repeat(2, 100px);
+        gap: 10px;
+    }
+    
+    .footer-images img {
+        height: 70px;
+    }
+}
+
 /* Notification */
 .notification {
     position: fixed;
     bottom: 20px;
     right: 20px;
-    background-color: #333; /* خلفية داكنة */
-    color: #fff; /* نص أبيض */
+    background-color: #333;
+    color: #fff;
     padding: 15px 20px;
     border-radius: 8px;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
@@ -1275,7 +740,6 @@ p, span, div, a, button, input, textarea, select, label {
     font-weight: 350 !important;
 }
 
-/* ضبط حجم الخط الأساسي */
 body, html {
     font-size: 14px;
 }
@@ -1286,9 +750,9 @@ body, html {
    <nav class="navbar">
         <div class="nav-container">
             <div class="logo">
-    <a href="index.html">
-        <h1>Vellora Design</h1>
-    </a>
+                <a href="index.html">
+                    <h1>Vellora Design</h1>
+                </a>
             </div>
             
             <!-- اللينكات على اليمين -->
@@ -1307,50 +771,17 @@ body, html {
             </div>
         </div>
     </nav>
-    <!-- Cart Modal -->
-    <div class="cart-modal" id="cartModal">
-        <div class="cart-modal-content">
-            <div class="cart-modal-header">
-                <h3>Shopping Cart</h3>
-                <button class="close-cart" id="closeCart">
-                    <span class="material-symbols-outlined">close</span>
-                </button>
+
+    <!-- Hero Section مع Contact Cards -->
+    <section class="hero-section" id="home">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">Connect With <span class="highlight">Architecture Experts</span></h1>
+                <p class="hero-subtitle">Let's Build Something Exceptional Together.</p>
             </div>
-            <div class="cart-modal-body" id="cartModalBody">
-                <!-- Cart items will be loaded here -->
-            </div>
-            <div class="cart-modal-footer">
-                <div class="cart-total">
-                    Total: <span id="cartTotalPrice">$0.00</span>
-                </div>
-                <div class="cart-actions">
-                    <button class="cart-btn clear-cart-btn" id="clearCartBtn">Clear Cart</button>
-                    <button class="cart-btn checkout-btn" id="checkoutBtn" disabled>Checkout</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Notification -->
-    <div class="notification" id="notification">
-        <span id="notificationMessage"></span>
-        <span class="material-symbols-outlined close-notification" id="closeNotification">close</span>
-    </div>
-
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="hero-bg"></div>
-        <div class="container hero-content">
-            <h1 class="hero-title">Connect With <span class="highlight">Architecture Experts</span></h1>
-            <p class="hero-subtitle">Let’s Build Something Exceptional Together.</p>
-        </div>
-    </section>
-
-    <!-- Contact Options Section -->
-    <section class="contact-section" id="contact">
-        <div class="container">
-
-            <div class="contact-options">
+            
+            <!-- Contact Cards Grid -->
+            <div class="contact-cards-grid">
                 <!-- WhatsApp Card -->
                 <div class="contact-card" id="whatsapp-card">
                     <div class="contact-icon-container">
@@ -1359,8 +790,7 @@ body, html {
                         </div>
                     </div>
                     <h3>WhatsApp Direct</h3>
-                    <p>Get instant responses to your queries via WhatsApp. Our support team is available Monday to
-                        Friday, 9 AM to 6 PM.</p>
+                    <p>Get instant responses to your queries via WhatsApp. Our support team is available Monday to Friday, 9 AM to 6 PM.</p>
                     <a href="https://wa.me/447470631885?text=Hi%20ArchitectureHub%2C%20I%20need%20assistance%20with%20an%20architectural%20project"
                         target="_blank" class="contact-btn" id="whatsapp-btn">
                         <i class="fab fa-whatsapp"></i> Start Chat Now
@@ -1375,9 +805,8 @@ body, html {
                         </div>
                     </div>
                     <h3>Schedule Appointment</h3>
-                    <p>Book a one-on-one consultation with our architecture experts. Choose a time that works best for
-                        your schedule.</p>
-                    <a href="#calendar-booking" class="contact-btn" id="schedule-btn">
+                    <p>Book a one-on-one consultation with our architecture experts. Choose a time that works best for your schedule.</p>
+                    <a href="#email-form" class="contact-btn" id="schedule-btn">
                         <i class="far fa-calendar-check"></i> Book Appointment
                     </a>
                 </div>
@@ -1390,8 +819,7 @@ body, html {
                         </div>
                     </div>
                     <h3>Email Support</h3>
-                    <p>Send us detailed project inquiries or technical questions. We respond within 24 hours with
-                        comprehensive solutions.</p>
+                    <p>Send us detailed project inquiries or technical questions. We respond within 24 hours with comprehensive solutions.</p>
                     <a href="#email-form" class="contact-btn" id="email-link-btn">
                         <i class="far fa-paper-plane"></i> Send Message
                     </a>
@@ -1446,6 +874,7 @@ body, html {
         </div>
     </section>
 
+    <!-- Footer -->
     <footer class="jda-footer">
         <div class="footer-inner">
             <!-- Left block -->
@@ -1453,7 +882,7 @@ body, html {
                 <div class="footer-logo">V</div>
 
                 <div class="footer-details">
-                    <h3>Vellora Design </h3>
+                    <h3>Vellora Design</h3>
                     <p class="footer-role">Architecture | Design | Management</p>
 
                     <div class="footer-contact">
@@ -1476,149 +905,27 @@ body, html {
                 </div>
             </div>
 
-            <!-- Right block -->
             <!-- Right block - Images -->
-<div class="footer-images">
-  <img src="https://iili.io/fi2fBKQ.jpg" alt="Project Image 1">
-  <img src="https://iili.io/fi2BlwX.jpg" alt="Project Image 2">
-</div>
-
+            <div class="footer-images">
+                <img src="https://iili.io/fi2fBKQ.jpg" alt="Project Image 1">
+                <img src="https://iili.io/fi2BlwX.jpg" alt="Project Image 2">
+            </div>
         </div>
     </footer>
-    
-    <!-- External Libraries -->
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 
+    <!-- JavaScript -->
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            /* ================= CART SYSTEM ================= */
-            let cart = JSON.parse(localStorage.getItem('shoppingCart')) || [];
-
-            function saveCart() {
-                localStorage.setItem('shoppingCart', JSON.stringify(cart));
-            }
-
-            function updateCartCount() {
-                const count = cart.reduce((t, i) => t + i.quantity, 0);
-                const desktop = document.getElementById('desktopCartCount');
-                const mobile = document.getElementById('mobileCartCount');
-                if (desktop) desktop.textContent = count;
-                if (mobile) {
-                    mobile.textContent = count;
-                    mobile.style.display = count > 0 ? 'flex' : 'none';
-                }
-            }
-
-            function addToCart(product) {
-                const item = cart.find(i => i.id === product.id);
-                if (item) {
-                    item.quantity++;
-                } else {
-                    cart.push({ ...product, quantity: 1 });
-                }
-                saveCart();
-                updateCartCount();
-                showNotification('Added to cart');
-            }
-
-            function removeFromCart(index) {
-                cart.splice(index, 1);
-                saveCart();
-                updateCartCount();
-            }
-
-            function increaseQuantity(index) {
-                cart[index].quantity++;
-                saveCart();
-                updateCartCount();
-            }
-
-            function decreaseQuantity(index) {
-                if (cart[index].quantity > 1) {
-                    cart[index].quantity--;
-                } else {
-                    cart.splice(index, 1);
-                }
-                saveCart();
-                updateCartCount();
-            }
-
-            function addSampleProducts() {
-                if (cart.length > 0) return;
-                addToCart({
-                    id: 1,
-                    name: 'Architectural Consultation',
-                    price: 299.99
-                });
-            }
-
-            /* ================= CONTACT FORM ================= */
-            const contactForm = document.getElementById('contactForm');
-            if (contactForm) {
-                contactForm.addEventListener('submit', function (e) {
-                    e.preventDefault();
-                    const btn = document.querySelector('.submit-btn');
-                    const original = btn.innerHTML;
-
-                    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-                    btn.disabled = true;
-
-                    setTimeout(() => {
-                        contactForm.reset();
-                        btn.innerHTML = original;
-                        btn.disabled = false;
-                        showNotification('Message sent successfully');
-                    }, 1500);
-                });
-            }
-
-            /* ================= AUTH ================= */
-            function updateAuthStatus() {
-                const desktop = document.getElementById('desktopAuthText');
-                const mobile = document.getElementById('mobileAuthText');
-                const logged = localStorage.getItem('currentUser');
-
-                const text = logged ? 'Logout' : 'Login';
-                if (desktop) desktop.textContent = text;
-                if (mobile) mobile.textContent = text;
-            }
-
-            window.toggleAuth = function () {
-                if (localStorage.getItem('currentUser')) {
-                    localStorage.removeItem('currentUser');
-                    showNotification('Logged out');
-                } else {
-                    window.location.href = 'registar.html';
-                }
-                updateAuthStatus();
-            };
-
-            /* ================= NOTIFICATION ================= */
-            function showNotification(message) {
-                const box = document.getElementById('notification');
-                const text = document.getElementById('notificationMessage');
-                if (!box || !text) return;
-
-                text.textContent = message;
-                box.classList.add('active');
-
-                setTimeout(() => box.classList.remove('active'), 3000);
-            }
-
-            /* ================= INIT ================= */
-            updateCartCount();
-            updateAuthStatus();
-            addSampleProducts();
-
-            // expose functions
-            window.addToCart = addToCart;
-            window.removeFromCart = removeFromCart;
-            window.increaseQuantity = increaseQuantity;
-            window.decreaseQuantity = decreaseQuantity;
-            
             /* ================= NAVBAR SCROLL EFFECT ================= */
-            
-            
+            window.addEventListener('scroll', function() {
+                const navbar = document.querySelector('.navbar');
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+
             /* ================= MOBILE MENU TOGGLE ================= */
             const hamburger = document.querySelector('.hamburger');
             const navLinks = document.querySelector('.nav-links');
@@ -1655,13 +962,12 @@ body, html {
             /* ================= SMOOTH SCROLL ================= */
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    
                     const targetId = this.getAttribute('href');
                     if (targetId === '#') return;
                     
                     const targetElement = document.querySelector(targetId);
                     if (targetElement) {
+                        e.preventDefault();
                         window.scrollTo({
                             top: targetElement.offsetTop - 100,
                             behavior: 'smooth'
@@ -1669,6 +975,38 @@ body, html {
                     }
                 });
             });
+
+            /* ================= CONTACT FORM ================= */
+            const contactForm = document.getElementById('contactForm');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function (e) {
+                    e.preventDefault();
+                    const btn = document.querySelector('.submit-btn');
+                    const original = btn.innerHTML;
+
+                    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+                    btn.disabled = true;
+
+                    setTimeout(() => {
+                        contactForm.reset();
+                        btn.innerHTML = original;
+                        btn.disabled = false;
+                        showNotification('Message sent successfully!');
+                    }, 1500);
+                });
+            }
+
+            /* ================= NOTIFICATION ================= */
+            function showNotification(message) {
+                const box = document.getElementById('notification');
+                const text = document.getElementById('notificationMessage');
+                if (!box || !text) return;
+
+                text.textContent = message;
+                box.classList.add('active');
+
+                setTimeout(() => box.classList.remove('active'), 3000);
+            }
         });
     </script>
 </body>
